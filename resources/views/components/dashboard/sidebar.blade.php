@@ -1,3 +1,4 @@
+@php use App\Models\Jurusan; @endphp
 <div id="sidebar">
     <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
@@ -74,6 +75,23 @@
                         <i class="bi bi-people-fill"></i>
                         <span>Users</span>
                     </a>
+                </li>
+
+
+                <li
+                    class="sidebar-item active has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-grid-1x2-fill"></i>
+                        <span>Mapel</span>
+                    </a>
+
+                    <ul class="submenu active">
+                        @foreach(Jurusan::all() as $jurusan)
+                            <li class="submenu-item  ">
+                                <a href="{{route('mapel.index', $jurusan->id)}}" class="submenu-link">{{$jurusan->nama_jurusan}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </li>
 
                 <li
@@ -263,8 +281,6 @@
                         </li>
 
                     </ul>
-
-
                 </li>
 
                 <li class="sidebar-title">Forms &amp; Tables</li>

@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         if (config("app.env") !== "production") {
             $this->call([
                 UserSeeder::class,
+                JurusanSeeder::class,
+                MapelSeeder::class,
             ]);
         }
     }

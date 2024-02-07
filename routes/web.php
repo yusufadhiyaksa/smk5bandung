@@ -6,6 +6,7 @@ use App\Http\Controllers\Management\Master\PermissionController;
 use App\Http\Controllers\Management\Master\RoleController;
 use App\Http\Controllers\Management\ProfileController;
 use App\Http\Controllers\Management\UserController;
+use App\Http\Controllers\MapelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,30 @@ Route::group([], __DIR__ . "/Auth/AuthRoute.php");
 Route::group([], __DIR__ . "/Auth/ForgotPasswordRoute.php");
 Route::group([], __DIR__ . "/Auth/RegistrationRoute.php");
 
+
+/**
+ * GET
+ * POST
+ * PUT
+ * PATCH
+ * DELETE
+ * mapel
+ *
+ * jurusan/1/mapel/edit/1
+ */
+
 Route::middleware("auth")->group(function () {
+//    Route::get("mapel", [MapelController::class, "index"])->name("mapel.index");
+//    Route::get("mapel/create", [MapelController::class, "index"])->name("mapel.create");
+//    Route::get("mapel/edit", [MapelController::class, "index"])->name("mapel.edit");
+//    Route::get("mapel/destroy", [MapelController::class, "index"])->name("mapel.destroy");
+
+    Route::prefix("jurusan/{jurusanId}/mapel")->name("mapel.")->controller(MapelController::class)->group(function (){
+        Route::get("", "index")->name("index");
+        Route::get("/create", "create")->name("create");
+        Route::post("", "store")->name("store");
+    });
+
     Route::prefix("management")->name("management.")->group(function () {
         Route::prefix("master")->name("master.")->group(function (){
             Route::get("/permissions", PermissionController::class)->name("permissions.index")->middleware("permission:" . Permission::PERMISSIONS_INDEX->value);
