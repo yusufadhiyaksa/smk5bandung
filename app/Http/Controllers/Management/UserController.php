@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Management;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Managements\Users\UpdateUserRequest;
+use App\Models\User;
 use App\Services\Managements\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -21,6 +23,7 @@ class UserController extends Controller
         viewShare($service->getAllData());
         return response()->view("management.users.index");
     }
+   
 
     /**
      * Use to show form edit

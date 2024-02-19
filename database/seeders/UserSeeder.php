@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\Role;
+use App\Models\Role as ModelsRole;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,13 +16,15 @@ class UserSeeder extends Seeder
             "name" => "iqbal atma muliawan",
             "email" => "iqbalatma@gmail.com",
             "email_verified_at" => "2023-12-31 08:38:35",
-            "password" => "admin"
+            "password" => "admin",
+            "nuptk" => "10117172"
         ],
         [
             "name" => "admin",
             "email" => "admin@gmail.com",
             "email_verified_at" => "2023-12-31 08:38:35",
-            "password" => "admin"
+            "password" => "admin",
+            "nuptk" => "10117412"
         ]
     ];
     /**
@@ -40,10 +43,12 @@ class UserSeeder extends Seeder
             }
 
             if ($createdUser->email === "admin@gmail.com") {
-                $createdUser->assignRole(Role::ADMIN->value);
+                $rolePengajar = ModelsRole::where('name', Role::PENGAJAR->value)->first();
+                $createdUser->role()->attach($rolePengajar);
             }
         }
 
-        User::factory()->count(100)->create();
+
+        User::factory()->count(30)->create();
     }
 }

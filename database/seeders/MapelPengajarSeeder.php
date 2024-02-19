@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Mapel;
+use App\Models\MapelPengajar;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class MapelSeeder extends Seeder
+class MapelPengajarSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Mapel::factory()->count(40)->create();
+        MapelPengajar::factory()->count(30)->create();
     }
 }

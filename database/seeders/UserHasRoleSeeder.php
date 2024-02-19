@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Mapel;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\UserHasRole;
 
-class MapelSeeder extends Seeder
+class UserHasRoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Mapel::factory()->count(40)->create();
+        UserHasRole::factory()->count(50)->create();
     }
 }

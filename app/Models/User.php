@@ -7,10 +7,12 @@ use App\Enums\Table;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -38,7 +40,8 @@ class User extends Authenticatable
         'password',
         'address',
         'phone',
-        'profile_image'
+        'profile_image',
+        'nuptk'
     ];
 
     /**
@@ -59,4 +62,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role() : BelongsToMany     {
+        return $this->belongsToMany(Role::class, 'user_has_role', 'user_id', 'role_id');
+        
+    }
 }

@@ -31,6 +31,9 @@ enum Permission: string
     #[Description("can show all data user")] #[FeatureGroup("users")]
     case USERS_INDEX = "users.index";
 
+    #[Description("can show all data user where role is pengajar")] #[FeatureGroup("users")]
+    case USERS_PENGAJAR = "users.pengajar";
+
     #[Description("can show form edit data user")] #[FeatureGroup("users")]
     case USERS_EDIT = "users.edit";
 

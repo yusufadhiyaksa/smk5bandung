@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->unsignedBigInteger("jurusan_id");
             $table->enum("tingkat", ["10", "11", "12", "13"]);
             $table->string("nama_kelas");
-            $table->unsignedBigInteger("pengajar_id");
+            $table->uuid("pengajar_id");
             $table->unsignedBigInteger("jumlah_siswa")->default(0);
             $table->timestamps();
         });

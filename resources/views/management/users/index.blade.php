@@ -10,6 +10,7 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">{{ ucwords(trans('managements/users.table.name')) }}</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">{{ ucwords(trans('general.lastUpdated')) }}</th>
                                     <th scope="col">{{ ucwords(trans('general.action')) }}</th>
                                 </tr>
@@ -20,8 +21,13 @@
                                     <td>{{ $users->firstItem()+$key }}</td>
                                     <td>{{ $user->name}}</td>
                                     <td>{{ $user->email}}</td>
+                                    <td>{{ $user->updated_at}}</td>
                                     <td>
-                                        <x-atoms.button-edit :url="route('management.users.edit', $user->id)"/>
+                                        <div class="d-flex"> 
+                                            
+                                            <x-atoms.button-edit :url="route('management.users.edit', $user->id)"/>
+                                            <x-atoms.button-destroy/>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -7,7 +7,11 @@ use App\Http\Controllers\Management\Master\RoleController;
 use App\Http\Controllers\Management\ProfileController;
 use App\Http\Controllers\Management\UserController;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\MapelPengajarController;
+use App\Http\Controllers\JurusanController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +55,35 @@ Route::middleware("auth")->group(function () {
         Route::get("", "index")->name("index");
         Route::get("/create", "create")->name("create");
         Route::post("", "store")->name("store");
+        Route::get("/{id}/edit", "edit")->name("edit"); // Gunakan URL yang berbeda untuk mengedit
+        Route::put("/{id}/update", "update")->name("update"); // Gunakan metode PUT untuk pembaruan
+        Route::delete("/{id}/destroy", "destroy")->name("destroy"); // Gunakan metode DELETE untuk penghapusan
+    });
+
+    Route::prefix("jurusan/{jurusanId}/kelas")->name("kelas.")->controller(KelasController::class)->group(function (){
+        Route::get("", "index")->name("index");
+        Route::get("/create", "create")->name("create");
+        Route::post("/store", "store")->name("store"); // Gunakan metode POST yang berbeda untuk menyimpan data
+        Route::get("/{id}/edit", "edit")->name("edit"); // Gunakan URL yang berbeda untuk mengedit
+        Route::put("/{id}/update", "update")->name("update"); // Gunakan metode PUT untuk pembaruan
+        Route::delete("/{id}/destroy", "destroy")->name("destroy"); // Gunakan metode DELETE untuk penghapusan
+    });
+
+    Route::prefix("mapelpengajar")->name("pengajar.")->group(function (){
+        Route::get("/", [MapelPengajarController::class, "index"])->name("index");
+        Route::get("{user_id}/create", [MapelPengajarController::class, "create"])->name("create");
+        Route::post("{user_id}/store", [MapelPengajarController::class, "store"])->name("store");
+        Route::get("/{pengajar_id}/pengajar", [MapelPengajarController::class, "pengajar"])->name("pengajar");
+        Route::delete("/{mapel_id}/{user_id}/destroy", [MapelPengajarController::class, "destroy"])->name("destroy"); 
+    });
+
+    Route::prefix("jurusan")->name("jurusan.")->group(function (){
+        Route::get("/", [JurusanController::class, "index"])->name("index");
+        Route::get("/create", [JurusanController::class, "create"])->name("create");
+        Route::post("{/store", [JurusanController::class, "store"])->name("store");
+        Route::delete("/{jurusanId}/destroy", [JurusanController::class, "destroy"])->name("destroy"); 
+        Route::get("/{jurusanId}/edit", [JurusanController::class, "edit"])->name("edit"); // Gunakan URL yang berbeda untuk mengedit
+        Route::put("/{jurusanId}/update", [JurusanController::class, "update"])->name("update"); 
     });
 
     Route::prefix("management")->name("management.")->group(function () {
@@ -67,6 +100,7 @@ Route::middleware("auth")->group(function () {
 
         Route::prefix("users")->name("users.")->controller(UserController::class)->group(function (){
             Route::get("/", "index")->name("index")->middleware("permission:".Permission::USERS_INDEX->value);
+            
             Route::get("/{id}", "edit")->name("edit")->middleware("permission:".Permission::USERS_EDIT->value);
             Route::put("/{id}", "update")->name("update")->middleware("permission:".Permission::USERS_UPDATE->value);
         });
