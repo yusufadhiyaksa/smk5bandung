@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Jurusan;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +14,7 @@ class JurusanController extends Controller
                 "cardTitle" => "Daftar Jurusan di SMKN 5 Bandung",
                 "title" => "Jurusan",
                 "jurusans" => Jurusan::all(),
+                
             ]);
             return response()->view("jurusan.index");
         }

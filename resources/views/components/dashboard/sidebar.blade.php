@@ -156,16 +156,34 @@ use Illuminate\Support\Facades\Auth;
                     class="sidebar-item ">
                     <a href="#" class='sidebar-link' >
                         <i class="bi bi-clipboard-check"></i>
-                        <span>Rencana PEmbelajaran</span>
+                        <span>Rencana Pembelajaran</span>
                     </a>
                 </li>
-                <li
-                    class="sidebar-item ">
-                    <a href="#" class='sidebar-link' >
-                        <i class="bi bi-clipboard-check"></i>
-                        <span>Materi Ajar</span>
-                    </a>
-                </li>
+            <li
+                class="sidebar-item  has-sub  @if(request()->routeIs('materi*')) active @endif">
+                <a href="#" class='sidebar-link'>
+                    <i class="bi bi-journal-bookmark-fill"></i>
+                    <span>Materi Ajar</span>
+                </a>
+
+                <ul class="submenu ">
+                    <li
+                        class="submenu-item ">
+                        <a href="{{ route('materi.index') }}" class='sidebar-link' >
+                            <i class="bi bi-clipboard-check"></i>
+                            <span>Materiku</span>
+                        </a>
+                    </li>
+                    <li
+                        class="submenu-item ">
+                        <a href="#" class='sidebar-link' >
+                            <i class="bi bi-clipboard-check"></i>
+                            <span>Cari Materi</span>
+                        </a>
+                    </li>
+                        
+                </ul>
+            </li>
                 <li
                     class="sidebar-item ">
                     <a href="#" class='sidebar-link' >

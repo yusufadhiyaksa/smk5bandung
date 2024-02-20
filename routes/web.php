@@ -10,6 +10,7 @@ use App\Http\Controllers\MapelController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelPengajarController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\MateriController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -84,6 +85,15 @@ Route::middleware("auth")->group(function () {
         Route::delete("/{jurusanId}/destroy", [JurusanController::class, "destroy"])->name("destroy"); 
         Route::get("/{jurusanId}/edit", [JurusanController::class, "edit"])->name("edit"); // Gunakan URL yang berbeda untuk mengedit
         Route::put("/{jurusanId}/update", [JurusanController::class, "update"])->name("update"); 
+    });
+
+    Route::prefix("materi")->name("materi.")->group(function (){
+        Route::get("/", [MateriController::class, "index"])->name("index");
+        Route::get("/create", [MateriController::class, "create"])->name("create");
+        Route::post("{/store", [MateriController::class, "store"])->name("store");
+        Route::delete("/{id}/destroy", [MateriController::class, "destroy"])->name("destroy"); 
+        Route::get("/{id}/edit", [MateriController::class, "edit"])->name("edit"); // Gunakan URL yang berbeda untuk mengedit
+        Route::put("/{id}/update", [MateriController::class, "update"])->name("update"); 
     });
 
     Route::prefix("management")->name("management.")->group(function () {
