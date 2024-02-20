@@ -11,6 +11,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelPengajarController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\AllMateriController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -94,6 +95,11 @@ Route::middleware("auth")->group(function () {
         Route::delete("/{id}/destroy", [MateriController::class, "destroy"])->name("destroy"); 
         Route::get("/{id}/edit", [MateriController::class, "edit"])->name("edit"); // Gunakan URL yang berbeda untuk mengedit
         Route::put("/{id}/update", [MateriController::class, "update"])->name("update"); 
+    });
+
+    Route::prefix("allmateri")->name("allmateri.")->group(function (){
+        Route::get("/", [AllMateriController::class, "index"])->name("index");
+        Route::get("/{materi_id}/show", [AllMateriController::class, "show"])->name("show");
     });
 
     Route::prefix("management")->name("management.")->group(function () {

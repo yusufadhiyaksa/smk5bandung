@@ -176,7 +176,7 @@ use Illuminate\Support\Facades\Auth;
                     </li>
                     <li
                         class="submenu-item ">
-                        <a href="#" class='sidebar-link' >
+                        <a href="{{ route('allmateri.index') }}" class='sidebar-link' >
                             <i class="bi bi-clipboard-check"></i>
                             <span>Cari Materi</span>
                         </a>
