@@ -100,6 +100,7 @@ Route::middleware("auth")->group(function () {
     Route::prefix("allmateri")->name("allmateri.")->group(function (){
         Route::get("/", [AllMateriController::class, "index"])->name("index");
         Route::get("/show", [AllMateriController::class, "show"])->name("show");
+        Route::get("/{id}/edit", [AllMateriController::class, "edit"])->name("edit"); 
     });
 
     Route::prefix("management")->name("management.")->group(function () {

@@ -53,9 +53,10 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="formFile" class="form-label">Cover Materi</label>
-                                        <input class="form-control" type="file" id="formFile" name="cover_foto">
+                                        <input class="form-control mb-3" type="file" id="formFile" name="cover_foto" onchange="previewImage()">
+                                        <img id="img-preview" class="img-preview img-fluid" style="max-height: 15rem;">
                                     </div>
-                                </div>
+                                </div>                                
                             </div>
                         </form>
                     </div>
@@ -70,3 +71,18 @@
         </div>
     </div>
 </x-dashboard.layout>
+<script>
+    function previewImage() {
+        const image = document.querySelector('#formFile');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+        
+        const oFReader = new FileReader();
+        oFReader.onload = function (oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        };
+        oFReader.readAsDataURL(image.files[0]);
+    }
+</script>
+
