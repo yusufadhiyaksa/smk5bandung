@@ -6,6 +6,12 @@
                 <div class="card-content">
                     <div class="card-body">
                         <h5 class="card-title mb-4">{{ $cardTitle }}</h5>
+                        <form action="{{ route('allmateri.show') }}" method="GET" class="mb-3">
+                            <div class="input-group">
+                                <input type="text" name="keyword" class="form-control" placeholder="Cari Materi"">
+                                <button type="submit" class="btn btn-primary">Cari</button>
+                            </div>
+                        </form>
 
                         <div class="row row-cols-1 row-cols-md-4 g-4 py-5">
                             @foreach ($materis as $materi)

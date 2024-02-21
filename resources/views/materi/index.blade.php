@@ -21,6 +21,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                                @dd($materis)
                             @foreach ($materis as $key => $materi)
                                 <tr>
                                     <th scope="row">{{ $key+1 }}</th>

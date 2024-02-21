@@ -99,7 +99,7 @@ Route::middleware("auth")->group(function () {
 
     Route::prefix("allmateri")->name("allmateri.")->group(function (){
         Route::get("/", [AllMateriController::class, "index"])->name("index");
-        Route::get("/{materi_id}/show", [AllMateriController::class, "show"])->name("show");
+        Route::get("/show", [AllMateriController::class, "show"])->name("show");
     });
 
     Route::prefix("management")->name("management.")->group(function () {
