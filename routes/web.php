@@ -12,6 +12,8 @@ use App\Http\Controllers\MapelPengajarController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\AllMateriController;
+use App\Http\Controllers\ForumController;
+use App\Models\Forum;
 use Illuminate\Support\Facades\Route;
 
 
@@ -101,6 +103,17 @@ Route::middleware("auth")->group(function () {
         Route::get("/", [AllMateriController::class, "index"])->name("index");
         Route::get("/show", [AllMateriController::class, "show"])->name("show");
         Route::get("/{id}/edit", [AllMateriController::class, "edit"])->name("edit"); 
+        Route::get("/{id}/detail", [AllMateriController::class, "detail"])->name("detail");
+        
+    });
+
+    Route::prefix("forum")->name("forum.")->group(function (){
+        Route::get("/", [ForumController::class, "index"])->name("index");
+        Route::get("/create", [ForumController::class, "create"])->name("create");
+        Route::post("{/store", [ForumController::class, "store"])->name("store");
+        Route::get("/{id}/edit", [ForumController::class, "edit"])->name("edit"); 
+        Route::put("/{id}/update", [ForumController::class, "update"])->name("update"); 
+        Route::delete("/{id}/destroy", [ForumController::class, "destroy"])->name("destroy"); 
     });
 
     Route::prefix("management")->name("management.")->group(function () {

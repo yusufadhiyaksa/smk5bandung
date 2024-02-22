@@ -25,6 +25,20 @@ class AllMateriController extends Controller
             ]);
             return response()->view("allmateri.index");
         }
+        public function detail($id){
+            viewShare([
+                "cardTitle" => "Detail Materi Ajar",
+                "title" => "Materi",
+                "materis"=>DB::table('materi_ajar')
+                            ->join('mapel', 'materi_ajar.mapel_id', '=', 'mapel.id')
+                            ->join('users', 'materi_ajar.user_id', '=', 'users.id')
+                            ->select('materi_ajar.*', 'mapel.nama_mapel', 'users.name')
+                            ->where('materi_ajar.id', $id)
+                            ->get()
+                
+            ]);
+            return response()->view("allmateri.detail");
+        }
         public function show()
         {
             $keyword = request()->input('keyword'); 

@@ -26,7 +26,7 @@
                                                 {{ Str::limit($materi->deskripsi_materi, 50) }}
                                             </p>
                                             <div class="d-flex justify-content-end"> 
-                                                <a href="{{ route('allmateri.show', $materi->id) }}" class="btn btn-primary">Detail</a>
+                                                <a href="{{ route('allmateri.detail', $materi->id) }}" class="btn btn-primary">Detail</a>
                                             </div>
                                         </div>
                                     </div>

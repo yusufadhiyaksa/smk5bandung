@@ -24,9 +24,9 @@
                                    value="{{$user->phone}}">
                         </div>
                         <div class="form-group">
-                            <label for="phone" class="form-label">Address</label>
-                            <textarea type="text" name="phone" id="phone" class="form-control"
-                                      placeholder="Enter your address" rows="4">{{$user->phone}}</textarea>
+                            <label for="address" class="form-label">Address</label>
+                            <textarea type="text" name="address" id="address" class="form-control"
+                                      placeholder="Enter your address" rows="4">{{$user->address}}</textarea>
                         </div>
 
 

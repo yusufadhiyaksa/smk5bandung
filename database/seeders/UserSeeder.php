@@ -13,8 +13,8 @@ class UserSeeder extends Seeder
 {
     public const DATA_USER = [
         [
-            "name" => "iqbal atma muliawan",
-            "email" => "iqbalatma@gmail.com",
+            "name" => "Mochamad Yusuf Adhiyaksa",
+            "email" => "S.yusufadhiyaksa@gmail.com",
             "email_verified_at" => "2023-12-31 08:38:35",
             "password" => "admin",
             "nuptk" => "10117172"
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
             $user["password"] = Hash::make($user["password"]);
             $createdUser = User::create($user);
 
-            if ($createdUser->email === "iqbalatma@gmail.com") {
+            if ($createdUser->email === "S.yusufadhiyaksa@gmail.com") {
                 $createdUser->assignRole(Role::SUPERADMIN->value);
             }
 

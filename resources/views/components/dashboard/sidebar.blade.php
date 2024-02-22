@@ -130,7 +130,7 @@ use Illuminate\Support\Facades\Auth;
                 <li
                     class="sidebar-item ">
                     <a href="#" class='sidebar-link' >
-                        <i class="bi bi-clipboard-check"></i>
+                        <i class="bi bi-bullseye"></i>
                         <span>Capaian Pembelajaran</span>
                     </a>
                 </li>
@@ -138,16 +138,8 @@ use Illuminate\Support\Facades\Auth;
                 <li
                     class="sidebar-item ">
                     <a href="#" class='sidebar-link' >
-                        <i class="bi bi-clipboard-check"></i>
+                        <i class="bi bi-calendar"></i>
                         <span>Agenda Kelas</span>
-                    </a>
-                </li>
-
-                <li
-                    class="sidebar-item ">
-                    <a href="#" class='sidebar-link' >
-                        <i class="bi bi-clipboard-check"></i>
-                        <span>Forum Diskusi</span>
                     </a>
                 </li>
 
@@ -155,12 +147,12 @@ use Illuminate\Support\Facades\Auth;
                 <li
                     class="sidebar-item ">
                     <a href="#" class='sidebar-link' >
-                        <i class="bi bi-clipboard-check"></i>
+                        <i class="bi bi-list"></i>
                         <span>Rencana Pembelajaran</span>
                     </a>
                 </li>
             <li
-                class="sidebar-item  has-sub  @if(request()->routeIs('materi*')) active @endif">
+                class="sidebar-item  has-sub  @if(request()->routeIs('allmateri*')) active @endif @if(request()->routeIs('materi*')) active @endif">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-journal-bookmark-fill"></i>
                     <span>Materi Ajar</span>
@@ -187,14 +179,14 @@ use Illuminate\Support\Facades\Auth;
                 <li
                     class="sidebar-item ">
                     <a href="#" class='sidebar-link' >
-                        <i class="bi bi-clipboard-check"></i>
-                        <span>Laporan Hasil Pembelajaran</span>
+                        <i class="bi bi-file-text"></i>
+                        <span>Laporan Hasil Belajar</span>
                     </a>
                 </li>
                 <li
-                    class="sidebar-item ">
-                    <a href="#" class='sidebar-link' >
-                        <i class="bi bi-clipboard-check"></i>
+                    class="sidebar-item @if(request()->routeIs('forum*')) active @endif " >
+                    <a href="{{ route('forum.index') }}" class='sidebar-link' >
+                        <i class="bi bi-chat"></i>
                         <span>Forum Diskusi</span>
                     </a>
                 </li>                
