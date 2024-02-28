@@ -21,7 +21,8 @@ class MapelFactory extends Factory
             "jurusan_id" => Jurusan::all()->pluck("id")->random(),
             "nama_mapel" => fake()->name,
             "fase" => fake()->randomElement(["E", "F"]),
-            "muatan" => fake()->randomElement(["nasional", "kewilayahan", "peminatan kejuruan", "kompetensi keahlian"])
+            "muatan" => fake()->randomElement(["nasional", "kewilayahan", "peminatan kejuruan", "kompetensi keahlian"]),
+            "capaian_mapel" =>fake()->text()
         ];
     }
 }

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("jurusan_id");
             $table->string("nama_mapel");
+            $table->string("capaian_mapel");
             $table->enum("fase", ["E", "F"]);
             $table->enum("muatan", ["nasional", "kewilayahan", "peminatan kejuruan", "kompetensi keahlian"]);
             $table->timestamps();

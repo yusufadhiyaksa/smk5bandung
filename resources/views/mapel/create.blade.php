@@ -39,6 +39,12 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="co-12">
+                                    <div class="form-group">
+                                        <label for="capaian_mapel" class="form-label">Capaian Pembelajaran</label>
+                                        <textarea class="form-control" style="height:8rem;" name="capaian_mapel" placeholder="Masukkan capaian mapel" id="capaian_pembelajaran"></textarea>  
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>

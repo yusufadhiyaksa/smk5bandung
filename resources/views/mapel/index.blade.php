@@ -16,7 +16,6 @@
                                 <th scope="col">Nama Mapel</th>
                                 <th scope="col">Fase</th>
                                 <th scope="col">Muatan</th>
-                                <th scope="col">Dibuat Tanggal</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                             </thead>
@@ -27,17 +26,10 @@
                                     <td>{{ $mapel->nama_mapel }}</td>
                                     <td>{{ $mapel->fase }}</td>
                                     <td>{{ $mapel->muatan }}</td>
-                                    <td>{{ $mapel->created_at }}</td>
                                     <td>
                                         <div class="d-flex">   
-                                            <x-atoms.button-edit :url="route('mapel.edit', ['jurusanId' => request()->route('jurusanId'), 'id' => $mapel->id])" />
-                                            <form id="delete-form-{{ $mapel->id }}" action="{{ route('mapel.destroy', ['jurusanId' => request()->route('jurusanId'), 'id' => $mapel->id]) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <x-atoms.button-destroy :url="route('mapel.destroy', ['jurusanId' => request()->route('jurusanId'), 'id' => $mapel->id])" />
-                                            </form>
+                                            <a href="{{ route('mapel.detail', ['jurusanId'=>request()->route('jurusanId'), 'id'=>$mapel->id]) }}" class="btn btn-sm btn-info"><i class="bi bi-eye"></i> Detail</a>
                                         </div>
-                                      
                                     </td>
                                 </tr>
                             @endforeach

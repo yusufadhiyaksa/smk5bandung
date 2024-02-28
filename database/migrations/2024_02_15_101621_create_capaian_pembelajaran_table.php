@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('capaian_pembelajaran', function (Blueprint $table) {
             $table->id();
-            $table->integer('mapel_id');
-            $table->string('kode_cp');
+            $table->integer('elemen_id');
+            $table->string('capaian');
             $table->timestamps();
         });
     }

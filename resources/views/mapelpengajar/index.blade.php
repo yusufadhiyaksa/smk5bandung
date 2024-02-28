@@ -33,9 +33,7 @@
                                     <td>{{ MapelPengajar::where('user_id',$user->id)->count(); }}</td>
                                     <td>
                                         <div class="d-flex"> 
-                                            <a href="{{ route('pengajar.pengajar', ['pengajar_id' => $user->id]) }}" class="btn btn-sm btn-info icon icon-left">
-                                                <i data-feather="info"></i> Detail
-                                            </a>
+                                            <a href="{{ route('pengajar.pengajar', ['pengajar_id' => $user->id]) }}" class="btn btn-sm btn-info icon icon-left">Detail</a>
                                         </div>
                                     </td>
                                 </tr>

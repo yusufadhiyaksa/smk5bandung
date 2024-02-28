@@ -25,7 +25,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="{{ $materis->first()->link_materi }}" class="btn btn-lg btn-primary me-3">Full Text</a>
+                            <a href="{{ $materis->first()->link_materi }}" class="btn btn-sm btn-primary me-3">Full Text</a>
                         </div>
                     </div>
                     

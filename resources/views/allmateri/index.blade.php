@@ -13,20 +13,20 @@
                             </div>
                         </form>
 
-                        <div class="row row-cols-1 row-cols-md-4 g-4 py-5">
+                        <div class="row row-cols-1 row-cols-md-5 g-3 py-2">
                             @foreach ($materis as $materi)
                             <div class="col">
                                 <div class="card shadow ">
                                     <div class="card-content">
                                         <img class="card-img-top img-fluid" src="{{ asset('storage/' . $materi->cover_foto) }}"
-                                            alt="Card image cap" style="height: 15rem" />
-                                        <div class="card-body" >
-                                            <h6 class="card-title" style="min-height: 4rem; ">{{ Str::limit($materi->judul_materi, 55) }}</h6>
-                                            <p class="card-text ">
-                                                {{ Str::limit($materi->deskripsi_materi, 50) }}
+                                            alt="Card image cap" style="height: 8rem" />
+                                        <div class="text-center ms-2 me-2 mt-2 mb-3 " >
+                                            <h6 class="card-title" style="height: 2rem; font-size:12px;"><b>{{ Str::limit($materi->judul_materi, 55) }}</b></h6>
+                                            <p class="card-text mt-3" style="height: 3rem; font-size:9px;">
+                                                {{ Str::limit($materi->deskripsi_materi, 160) }}
                                             </p>
-                                            <div class="d-flex justify-content-end"> 
-                                                <a href="{{ route('allmateri.detail', $materi->id) }}" class="btn btn-primary">Detail</a>
+                                            <div class="d-flex justify-content-center mt-4 "> 
+                                                <a href="{{ route('allmateri.detail', $materi->id) }}" class="btn btn-sm btn-success">Detail</a>
                                             </div>
                                         </div>
                                     </div>

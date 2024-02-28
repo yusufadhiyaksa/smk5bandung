@@ -51,10 +51,11 @@ class MapelController extends Controller
     public function store($jurusanId)
     {
         $data = request()->validate([
-            'nama_kelas' => 'required',
-            'jumlah_siswa' => 'required|integer|min:1', // Validasi jumlah siswa harus diisi dan harus berupa angka integer yang lebih dari 0
-            'tingkat' => 'required',
-            'pengajar_id' => 'required',
+            'nama_mapel' => 'required',
+            'fase' => 'required', // Validasi jumlah siswa harus diisi dan harus berupa angka integer yang lebih dari 0
+            'muatan' => 'required',
+            'capaian_mapel' => 'required'
+
         ]);
         $data = request()->post();
         Mapel::create($data);
@@ -82,5 +83,25 @@ class MapelController extends Controller
         } else {
             return redirect()->route("mapel.index", $jurusanId)->with("error", "Gagal menghapus data mapel");
         }
+    }
+    public function detail($jurusanId, $id){
+        viewShare([
+            "title" => "Detail Mapel",  
+            "pageTitle"=>"Detail Mapel",
+            "mapels" => DB::table('mapel')
+                        ->select('mapel.*')
+                        ->where('mapel.id', $id)
+                        ->get(),
+            "elemens" => DB::table('elemen')
+                        ->select('elemen.*')
+                        ->where('elemen.mapel_id', $id)
+                        ->get(),
+            "capaians" => DB::table('capaian_pembelajaran')
+                        ->join('elemen', 'capaian_pembelajaran.elemen_id', '=', 'elemen.id')
+                        ->select('capaian_pembelajaran.*')
+                        ->where('elemen.mapel_id', $id)
+                        ->get()
+        ]);
+        return response()->view("mapel.detail");
     }
 }

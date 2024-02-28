@@ -14,6 +14,7 @@ use App\Http\Controllers\MateriController;
 use App\Http\Controllers\AllMateriController;
 use App\Http\Controllers\ForumController;
 use App\Models\Forum;
+use App\Models\Mapel;
 use Illuminate\Support\Facades\Route;
 
 
@@ -62,6 +63,7 @@ Route::middleware("auth")->group(function () {
         Route::get("/{id}/edit", "edit")->name("edit"); // Gunakan URL yang berbeda untuk mengedit
         Route::put("/{id}/update", "update")->name("update"); // Gunakan metode PUT untuk pembaruan
         Route::delete("/{id}/destroy", "destroy")->name("destroy"); // Gunakan metode DELETE untuk penghapusan
+        Route::get("/{id}/detail", "detail")->name("detail");
     });
 
     Route::prefix("jurusan/{jurusanId}/kelas")->name("kelas.")->controller(KelasController::class)->group(function (){
